@@ -1,0 +1,115 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ZenCode",
+	"patterns": [
+		{ "include": "#captures" }
+	],
+	"repository": {
+        "captures": {
+            "patterns": [
+                { "include": "#commentLine" },
+                { "include": "#statementImport" },
+                { "include": "#genericType" },
+                { "include": "#preprocessor" },
+                { "include": "#keywords" },
+                { "include": "#literalBoolean" },
+                { "include": "#literalNumber" },
+                { "include": "#literalStringDouble" },
+                { "include": "#literalStringSingle" },
+                { "include": "#function" },
+                { "include": "#identifier" }
+            ]
+        },
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.zencode",
+				"match": "\\b(expand|public|class|import|new|continue|break|while|in|for|default|case|switch|if|else|var|as|void|int|usize|bool|long|float|double|char)\\b"
+			}]
+		},
+		"literalStringDouble": {
+			"name": "string.quoted.double.zencode",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [{
+				"name": "constant.character.escape.zencode",
+				"match": "\\\\."
+			}]
+		},
+		"literalStringSingle": {
+			"name": "string.quoted.double.zencode",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.zencode",
+					"match": "\\\\."
+				}
+			]
+		},
+		"literalBoolean": {
+			"patterns": [{
+				"name": "constant.boolean.zencode",
+				"match": "\\b(true|false)\\b"
+			}]
+		},
+        "literalNumber": {
+            "patterns": [{
+                "name": "constant.numeric.zencode",
+                "match": "\\b([0-9]+(\\.[0-9]+)?)\\b"
+            }]
+        },
+        "preprocessor": {
+            "name": "meta.preprocessor.zencode",
+            "match": "^#.*$"
+        },
+        "function": {
+            "begin": "\\b([^-`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.]+)\\(",
+            "end": "\\)",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.name.function.zencode"
+                }
+            },
+            "patterns": [{ "include": "#captures" }]
+        },
+        "genericType": {
+            "begin": "\\b([^-`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.]+)<",
+            "end": ">",
+            "beginCaptures": {
+                "1": { "name": "variable.name.zencode" }
+            },
+            "patterns": [
+                { "include": "#identifier" },
+                { "match": "," }
+            ]
+        },
+        "identifier": {
+            "name": "variable.name.zencode",
+            "match": "\\b([^-`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.]+)\\b"
+        },
+        "statementImport": {
+            "match": "(import)\\b(.+);",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.zencode"
+                },
+                "2": {
+                    "patterns": [
+                        { "include": "#identifier" },
+                        { "match": "\\." }
+                    ]
+                }
+            }
+        },
+        "commentLine": {
+            "name": "comment.line.zencode",
+            "match": "//.+$"
+        },
+        "commentBlock": {
+            "name": "comment.block.zencode",
+            "begin": "/*",
+            "end": "*/"
+        }
+	},
+	"scopeName": "source.zencode"
+}

@@ -1,0 +1,53 @@
+{
+  "name": "zencode-highlight",
+  "displayName": "ZenCode HighLight",
+  "description": "Highlighting for ZenCode.",
+  "author": {
+    "name": "zerodegress",
+    "email": "zerodegress@outlook.com",
+    "url": "https://zerodegress.ink"
+  },
+  "homepage": "https://github.com/zerodegress/zencode-highlight",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerodegress/zencode-highlight"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zerodegress/zencode-highlight/issues"
+  },
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.81.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "icon": "./icons/zsicon.ico",
+  "contributes": {
+    "languages": [
+      {
+        "id": "zencode",
+        "aliases": [
+          "ZenCode",
+          "zencode"
+        ],
+        "extensions": [
+          ".zs"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "dark": "./icons/zsicon.ico",
+          "light": "./icons/zsicon.ico"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "zencode",
+        "scopeName": "source.zencode",
+        "path": "./syntaxes/zencode.tmLanguage.json"
+      }
+    ]
+  }
+}
