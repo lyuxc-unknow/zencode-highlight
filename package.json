@@ -7,6 +7,7 @@
     "email": "zerodegress@outlook.com",
     "url": "https://zerodegress.ink"
   },
+  "publisher": "ZeroDegress",
   "homepage": "https://github.com/zerodegress/zencode-highlight",
   "repository": {
     "type": "git",
@@ -16,14 +17,14 @@
   "bugs": {
     "url": "https://github.com/zerodegress/zencode-highlight/issues"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.81.0"
   },
   "categories": [
     "Programming Languages"
   ],
-  "icon": "./icons/zsicon.ico",
+  "icon": "icons/zsicon.ico",
   "contributes": {
     "languages": [
       {

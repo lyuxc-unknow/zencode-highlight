@@ -23,7 +23,7 @@
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.zencode",
-				"match": "\\b(expand|public|class|import|new|continue|break|while|in|for|default|case|switch|if|else|var|as|void|int|usize|bool|long|float|double|char)\\b"
+				"match": "\\b(static|expand|public|class|import|new|continue|break|while|in|for|default|case|switch|if|else|var|as|void|int|usize|bool|long|float|double|char)\\b"
 			}]
 		},
 		"literalStringDouble": {
@@ -63,7 +63,7 @@
             "match": "^#.*$"
         },
         "function": {
-            "begin": "\\b([^-`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.]+)\\(",
+            "begin": "\\b([^-\\s`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.<>]+)\\(",
             "end": "\\)",
             "beginCaptures": {
                 "1": {
@@ -73,7 +73,7 @@
             "patterns": [{ "include": "#captures" }]
         },
         "genericType": {
-            "begin": "\\b([^-`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.]+)<",
+            "begin": "\\b([^-\\s`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.<>]+)<",
             "end": ">",
             "beginCaptures": {
                 "1": { "name": "variable.name.zencode" }
@@ -85,7 +85,7 @@
         },
         "identifier": {
             "name": "variable.name.zencode",
-            "match": "\\b([^-`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.]+)\\b"
+            "match": "\\b([^-\\s`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.<>]+)\\b"
         },
         "statementImport": {
             "match": "(import)\\b(.+);",
