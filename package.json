@@ -1,54 +1,67 @@
 {
-  "name": "zencode-highlight",
-  "displayName": "ZenCode HighLight",
-  "description": "Highlighting for ZenCode.",
-  "author": {
-    "name": "zerodegress",
-    "email": "zerodegress@outlook.com",
-    "url": "https://zerodegress.ink"
-  },
-  "publisher": "ZeroDegress",
-  "homepage": "https://github.com/zerodegress/zencode-highlight",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zerodegress/zencode-highlight"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zerodegress/zencode-highlight/issues"
-  },
-  "version": "1.0.1",
-  "engines": {
-    "vscode": "^1.81.0"
-  },
-  "categories": [
-    "Programming Languages"
-  ],
-  "icon": "icons/zsicon.ico",
-  "contributes": {
-    "languages": [
-      {
-        "id": "zencode",
-        "aliases": [
-          "ZenCode",
-          "zencode"
-        ],
-        "extensions": [
-          ".zs"
-        ],
-        "configuration": "./language-configuration.json",
-        "icon": {
-          "dark": "./icons/zsicon.ico",
-          "light": "./icons/zsicon.ico"
-        }
-      }
-    ],
-    "grammars": [
-      {
-        "language": "zencode",
-        "scopeName": "source.zencode",
-        "path": "./syntaxes/zencode.tmLanguage.json"
-      }
-    ]
-  }
+	"name": "zencode-highlight",
+	"displayName": "ZenCode HighLight",
+	"description": "Highlighting for ZenCode.",
+	"author": {
+		"name": "zerodegress",
+		"email": "zerodegress@outlook.com",
+		"url": "https://zerodegress.ink"
+	},
+	"publisher": "ZeroDegress",
+	"homepage": "https://github.com/zerodegress/zencode-highlight",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zerodegress/zencode-highlight"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/zerodegress/zencode-highlight/issues"
+	},
+	"version": "1.0.1",
+	"engines": {
+		"vscode": "^1.81.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"icon": "icons/zsicon.ico",
+	"contributes": {
+		"languages": [
+			{
+				"id": "zencode",
+				"aliases": [
+					"ZenCode",
+					"zencode"
+				],
+				"extensions": [
+					".zs"
+				],
+				"configuration": "./language-configuration.json",
+				"icon": {
+					"dark": "./icons/zsicon.ico",
+					"light": "./icons/zsicon.ico"
+				}
+			}
+		],
+		"grammars": [
+			{
+				"language": "zencode",
+				"scopeName": "source.zencode",
+				"path": "./syntaxes/zencode.tmLanguage.json"
+			}
+		]
+	},
+	"__metadata": {
+		"id": "31a86546-528f-478e-9fdf-a24c877e4d85",
+		"publisherId": "35edc35d-6716-4553-8817-b34e0a18739b",
+		"publisherDisplayName": "ZeroDegress",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1741089931041,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery"
+	}
 }

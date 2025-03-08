@@ -8,6 +8,7 @@
         "captures": {
             "patterns": [
                 { "include": "#commentLine" },
+                { "include": "#commentBlock"},
                 { "include": "#statementImport" },
                 { "include": "#genericType" },
                 { "include": "#preprocessor" },
@@ -17,15 +18,22 @@
                 { "include": "#literalStringDouble" },
                 { "include": "#literalStringSingle" },
                 { "include": "#function" },
-                { "include": "#identifier" }
+                { "include": "#identifier" },
+                { "include": "#itemTag"}
             ]
         },
 		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.zencode",
-				"match": "\\b(static|expand|public|class|import|new|continue|break|while|in|for|default|case|switch|if|else|var|as|void|int|usize|bool|long|float|double|char)\\b"
-			}]
-		},
+			"patterns": [
+                {
+                    "name": "keyword.control.zencode",
+                    "match": "\\b(abstract|alias|as|bool|break|byte|case|catch|char|class|continue|default|destructable|do|double|else|enum|expand|extern|export|false|final|finally|float|for|function|get|if|in|immutable|implements|implicit|import|int|interface|internal|is|lock|long|match|multithreaded|mut|new|null|override|panic|private|protected|public|return|sbyte|set|shared|short|static|string|struct|super|switch|this|threadlocked|throw|throws|true|try|uint|ulong|unique|ushort|usize|variant|virtual|void|weak|while)\\b"
+                },
+                {
+                    "match": "\\b(var|val|static|const)\\b",
+                    "name": "keyword.control.zencode"   
+                }
+            ]
+        },
 		"literalStringDouble": {
 			"name": "string.quoted.double.zencode",
 			"begin": "\"",
@@ -60,7 +68,19 @@
         },
         "preprocessor": {
             "name": "meta.preprocessor.zencode",
-            "match": "^#.*$"
+            "match": "^(\\s*)(#)(debug|loader|loadfirst|loadlast|priority|modloaded|modloader|replace|snip|noload)",
+			"captures": {
+				"1": {
+					"name": "keyword.control.zencode"
+				},
+				"2": {
+					"name": "keyword.control.zencode"
+				},
+				"3": {
+					"name": "variable.language.zencode"
+				}
+			}
+
         },
         "function": {
             "begin": "\\b([^-\\s`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.<>]+)\\(",
@@ -88,27 +108,43 @@
             "match": "\\b([^-\\s`!@#\\$%\\^&*~\\(\\)_+=;:'\"\\{\\}\\[\\]\\\\|\\/\\?,\\.<>]+)\\b"
         },
         "statementImport": {
-            "match": "(import)\\b(.+);",
+            "match": "(import)\\s+((?:[a-zA-Z0-9_]+\\.)*)([A-Za-z0-9_]+);",
             "captures": {
-                "1": {
-                    "name": "keyword.control.zencode"
-                },
-                "2": {
-                    "patterns": [
-                        { "include": "#identifier" },
-                        { "match": "\\." }
-                    ]
-                }
+                "1": { "name": "keyword.control.zencode" },
+                "2": { "name": "keyword.control.zencode" },
+                "3": { "name": "entity.name.type.zencode" }
             }
         },
         "commentLine": {
             "name": "comment.line.zencode",
-            "match": "//.+$"
+            "match": "\\s*((#|//).*$\\n?)"
         },
         "commentBlock": {
             "name": "comment.block.zencode",
-            "begin": "/*",
-            "end": "*/"
+            "begin": "\\/\\*",
+            "end": "\\*\\/",
+            "patterns": [
+                {
+                    "name": "comment.block.documentation.zencode",
+                    "match": "@\\w+"
+                }
+            ]
+        },
+        "itemTag": {
+            "patterns": [
+                {
+                    "name":"keyword.other.zencode",
+                    "match": "(<)\\b(.*?)(:(.*?(:(\\*|\\d+)?)?)?)(>)",
+                    "captures": {
+                        "1": {
+							"name": "keyword.control.zencode"
+						},
+						"2": {
+							"name": "entity.name.tag.zencode"
+						}
+                    }
+                }
+            ]
         }
 	},
 	"scopeName": "source.zencode"
